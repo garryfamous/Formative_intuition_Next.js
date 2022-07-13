@@ -19,15 +19,9 @@ function FilteredEventsPage(props) {
   );
 
   useEffect(() => {
-    if (data) {
-      const events = [];
-
-      for (const key in data) {
-        events.push({
-        id: key,
-        ...data[key],
-      });
-    }
+    const events = Object.keys(data).map((key) => {
+        return { id: key, ...data[key] };
+    });
       setLoadedEvents(events);
     }
   }, [data]);
